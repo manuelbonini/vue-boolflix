@@ -3,7 +3,9 @@ var app = new Vue(
         el: '#root',
         data: {
             userSearchMovie:'',
-            movie: []
+            movie: [],
+            userSearchTvSeries:'',
+            tvSeries: []
         },
         methods: {
             searchMovie() {
@@ -30,6 +32,31 @@ var app = new Vue(
                         });
                     
                     this.userSearchMovie='';
+                }
+            },
+            searchTvSeries() {
+                if(this.userSearchTvSeries.length > 0) {
+                    axios
+                        .get('https://api.themoviedb.org/3/search/tv', {
+                            params: {
+                                api_key: '798b76e741cadd5b5e4522e8b5e11d28',
+                                query: this.userSearchTvSeries,
+                                language: 'it-IT'
+                            }
+                        })
+                        .then((response) => {
+                            const result = response.data.results;
+                            this.tvSeries = result;
+
+                            this.tvSeries.forEach((tvSeries) => {
+                                console.log(tvSeries.name);
+                                console.log(tvSeries.original_name);
+                                console.log(tvSeries.original_language);
+                                console.log(tvSeries.vote_average);
+                            });
+                        });
+                    
+                    this.userSearchTvSeries='';
                 }
             }
         },
