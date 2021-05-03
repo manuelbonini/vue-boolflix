@@ -21,18 +21,28 @@
             <input 
                 v-model="userSearchMovie"
                 type="text" 
-                placeholder="Inserisci un titolo di una seri tv"
+                placeholder="Inserisci un titolo di un film"
             >
             <button @click="searchMovie">Cerca</button>
         </div>
 
         <div>
-            <input 
-                v-model="userSearchTvSeries"
-                type="text" 
-                placeholder="Inserisci un titolo di un film"
-            >
-            <button @click="searchTvSeries">Cerca</button>
+            <ul>
+                <li v-for="movie in movie">
+                    <div>
+                        {{ movie.title }}
+                    </div>
+                    <div>
+                        {{ movie.original_title }}
+                    </div>
+                    <div>
+                        {{ movie.original_language }}
+                    </div>
+                    <div>
+                        {{ movie.vote_average }}
+                    </div>
+                </li>
+            </ul>
         </div>
 
     </div>

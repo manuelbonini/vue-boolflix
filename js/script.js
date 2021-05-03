@@ -31,11 +31,12 @@ var app = new Vue(
                             });
                         });
                     
+                    // modifiche 
+                    this.userSearchTvSeries= this.userSearchMovie;
+
                     this.userSearchMovie='';
                 }
-            },
-            searchTvSeries() {
-                if(this.userSearchTvSeries.length > 0) {
+                if(this.userSearchTvSeries.length = 0) {
                     axios
                         .get('https://api.themoviedb.org/3/search/tv', {
                             params: {
@@ -58,22 +59,47 @@ var app = new Vue(
                     
                     this.userSearchTvSeries='';
                 }
-            }
+            },
+            // searchTvSeries() {
+            //     if(this.userSearchTvSeries.length > 0) {
+            //         axios
+            //             .get('https://api.themoviedb.org/3/search/tv', {
+            //                 params: {
+            //                     api_key: '798b76e741cadd5b5e4522e8b5e11d28',
+            //                     query: this.userSearchTvSeries,
+            //                     language: 'it-IT'
+            //                 }
+            //             })
+            //             .then((response) => {
+            //                 const result = response.data.results;
+            //                 this.tvSeries = result;
+
+            //                 this.tvSeries.forEach((tvSeries) => {
+            //                     console.log(tvSeries.name);
+            //                     console.log(tvSeries.original_name);
+            //                     console.log(tvSeries.original_language);
+            //                     console.log(tvSeries.vote_average);
+            //                 });
+            //             });
+                    
+            //         this.userSearchTvSeries='';
+            //     }
+            // }
         },
         mounted() {
-            axios
-                .get('https://api.themoviedb.org/3/search/movie?api_key=798b76e741cadd5b5e4522e8b5e11d28&query=the prestige&language=it-IT')
-                .then((response) => {
-                    const result = response.data.results;
-                    this.movie = result;
-                    console.log(this.movie);
-                    console.log(this.movie[0].title);
-                    console.log(this.movie[0].original_title);
-                    console.log(this.movie[0].original_language);
-                    console.log(this.movie[0].vote_average);
+            // axios
+            //     .get('https://api.themoviedb.org/3/search/movie?api_key=798b76e741cadd5b5e4522e8b5e11d28&query=the prestige&language=it-IT')
+            //     .then((response) => {
+            //         const result = response.data.results;
+            //         this.movie = result;
+            //         console.log(this.movie);
+            //         console.log(this.movie[0].title);
+            //         console.log(this.movie[0].original_title);
+            //         console.log(this.movie[0].original_language);
+            //         console.log(this.movie[0].vote_average);
 
                     
-                });
+            //     });
         }
     }
 );
