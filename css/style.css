@@ -5,5 +5,67 @@
 }
 
 img {
-    width: 50px;
+    width: 100%;
+}
+
+.container {
+    font-family: 'Montserrat', sans-serif;
+}
+
+header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: black;
+}
+
+.logo {
+    color: red;
+    font-size: 25px;
+}
+
+.cover-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    background-color: grey;
+}
+
+.cover {
+    width: calc((100% / 6) - 40px );
+    padding: 20px;
+    margin: 0 20px;
+    margin-bottom: 15px;
+}
+.cover .shaw {
+    display: none;
+}
+.cover:hover .shaw {
+    display: block;
+    background-color: black;
+    height: 100%;
+    color: white;
+    border: 1px solid white;
+    padding-top: 30px;
+}
+.cover:hover img {
+    display: none;
+}
+.cover img {
+    border: 1px solid white;
+}
+
+.shaw span {
+    font-weight: bold;
+}
+.shaw .crop {
+    height: 172px;
+    overflow: hidden;
+}
+
+span.star {
+    color: yellow;
+    font-weight: normal;
 }

@@ -33,14 +33,11 @@ var app = new Vue(
                                 let url= movie.poster_path;
                                 this.imageFilm.push(this.baseUrl + url);
 
-
-                                let finalVote= movie.vote_average / 2;
+                                // converte il voto in 1 a 5 
+                                let finalVote= Math.ceil(movie.vote_average / 2);
                                 this.voteFilm.push(finalVote);
-                                // controllo
-                                console.log(movie.title);
-                                console.log(movie.original_title);
-                                console.log(movie.original_language);
-                                console.log(movie.vote_average);
+
+                                
                             });
                         });
                     
@@ -68,7 +65,7 @@ var app = new Vue(
                                 let url= tvSeries.poster_path;
                                 this.imageTv.push(this.baseUrl + url);
 
-                                let finalVote= tvSeries.vote_average / 2;
+                                let finalVote= Math.ceil(tvSeries.vote_average / 2);
                                 this.voteTv.push(finalVote);
                                 // controllo
                                 console.log(tvSeries.name);
