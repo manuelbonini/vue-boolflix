@@ -31,14 +31,19 @@ var app = new Vue(
                             // inserisce url immagine dentro l'array imageFilm
                             this.movie.forEach((movie) => {
                                 let url= movie.poster_path;
-                                this.imageFilm.push(this.baseUrl + url);
+                                if(movie.poster_path == null) {
+                                    url = 'img/immagine-non-disponibile.jpg';
+                                    this.imageFilm.push(url);
+                                }else {
+                                    this.imageFilm.push(this.baseUrl + url);
+                                }
+                                
 
                                 // converte il voto in 1 a 5 
                                 let finalVote= Math.ceil(movie.vote_average / 2);
                                 this.voteFilm.push(finalVote);
-
-                                
                             });
+                            console.log(this.imageFilm);
                         });
                     
                     // modifiche 
@@ -63,15 +68,17 @@ var app = new Vue(
                             // inserisce url immagine dentro l'array imageTV
                             this.tvSeries.forEach((tvSeries) => {
                                 let url= tvSeries.poster_path;
-                                this.imageTv.push(this.baseUrl + url);
+                                if(tvSeries.poster_path == null) {
+                                    url = 'img/immagine-non-disponibile.jpg';
+                                    this.imageTv.push(url);
+                                }else {
+                                    this.imageTv.push(this.baseUrl + url);
+                                }
 
+                                // converte il voto in 1 a 5
                                 let finalVote= Math.ceil(tvSeries.vote_average / 2);
                                 this.voteTv.push(finalVote);
-                                // controllo
-                                console.log(tvSeries.name);
-                                console.log(tvSeries.original_name);
-                                console.log(tvSeries.original_language);
-                                console.log(tvSeries.vote_average);
+                                
                             });
 
 
@@ -83,19 +90,7 @@ var app = new Vue(
             }
         },
         mounted() {
-            // axios
-            //     .get('https://api.themoviedb.org/3/search/movie?api_key=798b76e741cadd5b5e4522e8b5e11d28&query=the prestige&language=it-IT')
-            //     .then((response) => {
-            //         const result = response.data.results;
-            //         this.movie = result;
-            //         console.log(this.movie);
-            //         console.log(this.movie[0].title);
-            //         console.log(this.movie[0].original_title);
-            //         console.log(this.movie[0].original_language);
-            //         console.log(this.movie[0].vote_average);
-
-                    
-            //     });
+            
         }
     }
 );

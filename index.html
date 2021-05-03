@@ -21,7 +21,7 @@
     <div id="root">
 
         <div class="container">
-
+            
             <header>
                 <!-- logo -->
                 <div class="logo">
@@ -52,7 +52,7 @@
                                 <span>Titolo originale: </span>{{ movie.original_title }}
                             </div>
                             <div>
-                                <span>Voto: </span>{{ movie.original_language }}
+                                <span>Lingua: </span>{{ movie.original_language }}
                             </div>
                             <div>
                                 <span>Voto: </span><span v-for="star in voteFilm[index]" class="star"><i class="fas fa-star"></i></span>
@@ -63,61 +63,30 @@
                         </div>
                         <img :src="imageFilm[index]" alt="">
                     </div>
+                    <!-- series -->
+                    <div v-for="(movie, index) in tvSeries" class="cover">
+                        <div class="shaw">
+                            <div>
+                                <span>Titolo: </span>{{ movie.name }}
+                            </div>
+                            <div>
+                                <span>Titolo originale: </span>{{ movie.original_name }}
+                            </div>
+                            <div>
+                                <span>Lingua: </span>{{ movie.original_language }}
+                            </div>
+                            <div>
+                                <span>Voto: </span><span v-for="star in voteTv[index]" class="star"><i class="fas fa-star"></i></span>
+                            </div>
+                            <div class="crop">
+                                <span>Overview: </span>{{ movie.overview }}
+                            </div>
+                        </div>
+                        <img :src="imageTv[index]" alt="">
+                    </div>
                 </div>
-                <!-- series -->
+                
             </main>
-        </div>
-        
-       
-
-        <div>
-            <ul>
-                <li v-for="(movie, index) in movie">
-                    <div>
-                        {{ movie.title }}
-                    </div>
-                    <div>
-                        {{ movie.original_title }}
-                    </div>
-                    <div>
-                        {{ movie.original_language }}
-                    </div>
-                    <!-- da togliere  -->
-                    <div>
-                        {{ movie.vote_average }}
-                    </div>
-                    <!--  -->
-                    <div>
-                        {{ voteFilm[index] }}
-                    </div>
-                    <img :src="imageFilm[index]" alt="">
-                </li>
-            </ul>
-        </div>
-        <div>
-            <ul>
-                <li v-for="(movie, index) in tvSeries">
-                    <div>
-                        {{ movie.name }}
-                    </div>
-                    <div>
-                        {{ movie.original_name }}
-                    </div>
-                    <div>
-                        {{ movie.original_language }}
-                    </div>
-                    <!-- da togliere  -->
-                    <div>
-                        {{ movie.vote_average }}
-                    </div>
-                    <!--  -->
-                    <div>
-                        {{ voteTv[index] }}
-                    </div>
-                    
-                    <img :src="imageTv[index]" alt="">
-                </li>
-            </ul>
         </div>
 
     </div>
