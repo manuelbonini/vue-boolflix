@@ -5,7 +5,12 @@ var app = new Vue(
             userSearchMovie:'',
             movie: [],
             userSearchTvSeries:'',
-            tvSeries: []
+            tvSeries: [],
+            imageFilm: [],
+            imageTv: [],
+            baseUrl: 'https://image.tmdb.org/t/p/w342/',
+            voteFilm: [],
+            voteTv:[]
         },
         methods: {
             searchMovie() {
@@ -23,7 +28,15 @@ var app = new Vue(
                             const result = response.data.results;
                             this.movie = result;
 
+                            // inserisce url immagine dentro l'array imageFilm
                             this.movie.forEach((movie) => {
+                                let url= movie.poster_path;
+                                this.imageFilm.push(this.baseUrl + url);
+
+
+                                let finalVote= movie.vote_average / 2;
+                                this.voteFilm.push(finalVote);
+                                // controllo
                                 console.log(movie.title);
                                 console.log(movie.original_title);
                                 console.log(movie.original_language);
@@ -35,8 +48,9 @@ var app = new Vue(
                     this.userSearchTvSeries= this.userSearchMovie;
 
                     this.userSearchMovie='';
+                    this.imageFilm=[];
                 }
-                if(this.userSearchTvSeries.length = 0) {
+                if(this.userSearchTvSeries.length > 0) {
                     axios
                         .get('https://api.themoviedb.org/3/search/tv', {
                             params: {
@@ -49,42 +63,27 @@ var app = new Vue(
                             const result = response.data.results;
                             this.tvSeries = result;
 
+                            // inserisce url immagine dentro l'array imageTV
                             this.tvSeries.forEach((tvSeries) => {
+                                let url= tvSeries.poster_path;
+                                this.imageTv.push(this.baseUrl + url);
+
+                                let finalVote= tvSeries.vote_average / 2;
+                                this.voteTv.push(finalVote);
+                                // controllo
                                 console.log(tvSeries.name);
                                 console.log(tvSeries.original_name);
                                 console.log(tvSeries.original_language);
                                 console.log(tvSeries.vote_average);
                             });
+
+
                         });
                     
                     this.userSearchTvSeries='';
+                    this.imageTv=[];
                 }
-            },
-            // searchTvSeries() {
-            //     if(this.userSearchTvSeries.length > 0) {
-            //         axios
-            //             .get('https://api.themoviedb.org/3/search/tv', {
-            //                 params: {
-            //                     api_key: '798b76e741cadd5b5e4522e8b5e11d28',
-            //                     query: this.userSearchTvSeries,
-            //                     language: 'it-IT'
-            //                 }
-            //             })
-            //             .then((response) => {
-            //                 const result = response.data.results;
-            //                 this.tvSeries = result;
-
-            //                 this.tvSeries.forEach((tvSeries) => {
-            //                     console.log(tvSeries.name);
-            //                     console.log(tvSeries.original_name);
-            //                     console.log(tvSeries.original_language);
-            //                     console.log(tvSeries.vote_average);
-            //                 });
-            //             });
-                    
-            //         this.userSearchTvSeries='';
-            //     }
-            // }
+            }
         },
         mounted() {
             // axios

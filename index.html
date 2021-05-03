@@ -28,7 +28,7 @@
 
         <div>
             <ul>
-                <li v-for="movie in movie">
+                <li v-for="(movie, index) in movie">
                     <div>
                         {{ movie.title }}
                     </div>
@@ -38,9 +38,40 @@
                     <div>
                         {{ movie.original_language }}
                     </div>
+                    <!-- da togliere  -->
                     <div>
                         {{ movie.vote_average }}
                     </div>
+                    <!--  -->
+                    <div>
+                        {{ voteFilm[index] }}
+                    </div>
+                    <img :src="imageFilm[index]" alt="">
+                </li>
+            </ul>
+        </div>
+        <div>
+            <ul>
+                <li v-for="(movie, index) in tvSeries">
+                    <div>
+                        {{ movie.name }}
+                    </div>
+                    <div>
+                        {{ movie.original_name }}
+                    </div>
+                    <div>
+                        {{ movie.original_language }}
+                    </div>
+                    <!-- da togliere  -->
+                    <div>
+                        {{ movie.vote_average }}
+                    </div>
+                    <!--  -->
+                    <div>
+                        {{ voteTv[index] }}
+                    </div>
+                    
+                    <img :src="imageTv[index]" alt="">
                 </li>
             </ul>
         </div>
